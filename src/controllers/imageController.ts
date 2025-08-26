@@ -15,7 +15,7 @@ const CACHE_DIR = path.join(__dirname, '../../cache');
 
 // Controller to handle image processing requests
 export const imageController = async (
-  req: Request<object, object, object, ImageParams>,
+  req: Request<unknown, unknown, unknown, ImageParams>,
   res: Response,
 ) => {
   try {
