@@ -1,0 +1,7 @@
+export default {
+  spec_dir: 'dist/tests',
+  spec_files: ['**/*[sS]pec.js'],
+  helpers: ['helpers/**/*.js'],
+  stopSpecOnExpectationFailure: false,
+  random: false,
+};

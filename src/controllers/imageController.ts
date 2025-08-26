@@ -12,6 +12,10 @@ const __dirname = path.dirname(__filename);
 // Directories for original and cached images
 const IMAGES_DIR = path.join(__dirname, '../../images');
 const CACHE_DIR = path.join(__dirname, '../../cache');
+// Ensure cache directory exists
+if (!fs.existsSync(CACHE_DIR)) {
+  fs.mkdirSync(CACHE_DIR, { recursive: true });
+}
 
 // Controller to handle image processing requests
 export const imageController = async (
@@ -21,7 +25,7 @@ export const imageController = async (
   try {
     const { filename, width, height, format } = req.query;
 
-    const inputPath = path.join(IMAGES_DIR, filename);
+    const inputPath = path.join(IMAGES_DIR, filename!);
 
     // Check if the original image exists
     if (!fs.existsSync(inputPath)) {
@@ -32,7 +36,7 @@ export const imageController = async (
     const heightStr = height ? String(height) : 'auto';
     const formatStr = format ? String(format) : 'jpeg';
 
-    const outputFilename = `${path.parse(filename).name}_${widthStr}x${heightStr}.${formatStr}`;
+    const outputFilename = `${path.parse(filename!).name}_${widthStr}x${heightStr}.${formatStr}`;
     const outputPath = path.join(CACHE_DIR, outputFilename);
     // serve from cache if exists
     if (fs.existsSync(outputPath)) {

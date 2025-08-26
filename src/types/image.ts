@@ -1,5 +1,5 @@
 export interface ImageParams {
-  filename: string;
+  filename?: string;
   width?: number;
   height?: number;
   format?: string;
