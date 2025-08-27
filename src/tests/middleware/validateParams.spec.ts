@@ -19,8 +19,6 @@ describe('validateParams Middleware', () => {
     next = jasmine.createSpy('next');
   });
 
-  // Test cases
-
   it('should return 400 if filename is missing', () => {
     req.query = {};
     validateParams(req as Request, res as Response, next as NextFunction);
@@ -61,7 +59,9 @@ describe('validateParams Middleware', () => {
     expect(res.status).toHaveBeenCalledWith(400);
     expect(
       (res.status as jasmine.Spy).calls.mostRecent().returnValue.json,
-    ).toHaveBeenCalledWith({ error: 'Width must be a positive integer not exceeding 2000.' });
+    ).toHaveBeenCalledWith({
+      error: 'Width must be a positive integer not exceeding 2000.',
+    });
     expect(next).not.toHaveBeenCalled();
   });
   it('should return 400 if width is negative', () => {
@@ -71,7 +71,9 @@ describe('validateParams Middleware', () => {
     expect(res.status).toHaveBeenCalledWith(400);
     expect(
       (res.status as jasmine.Spy).calls.mostRecent().returnValue.json,
-    ).toHaveBeenCalledWith({ error: 'Width must be a positive integer not exceeding 2000.' });
+    ).toHaveBeenCalledWith({
+      error: 'Width must be a positive integer not exceeding 2000.',
+    });
     expect(next).not.toHaveBeenCalled();
   });
 
@@ -82,7 +84,9 @@ describe('validateParams Middleware', () => {
     expect(res.status).toHaveBeenCalledWith(400);
     expect(
       (res.status as jasmine.Spy).calls.mostRecent().returnValue.json,
-    ).toHaveBeenCalledWith({ error: 'Width must be a positive integer not exceeding 2000.' });
+    ).toHaveBeenCalledWith({
+      error: 'Width must be a positive integer not exceeding 2000.',
+    });
     expect(next).not.toHaveBeenCalled();
   });
 
@@ -94,7 +98,9 @@ describe('validateParams Middleware', () => {
     expect(res.status).toHaveBeenCalledWith(400);
     expect(
       (res.status as jasmine.Spy).calls.mostRecent().returnValue.json,
-    ).toHaveBeenCalledWith({ error: 'Height must be a positive integer not exceeding 2000.' });
+    ).toHaveBeenCalledWith({
+      error: 'Height must be a positive integer not exceeding 2000.',
+    });
     expect(next).not.toHaveBeenCalled();
   });
 
@@ -105,7 +111,9 @@ describe('validateParams Middleware', () => {
     expect(res.status).toHaveBeenCalledWith(400);
     expect(
       (res.status as jasmine.Spy).calls.mostRecent().returnValue.json,
-    ).toHaveBeenCalledWith({ error: 'Height must be a positive integer not exceeding 2000.' });
+    ).toHaveBeenCalledWith({
+      error: 'Height must be a positive integer not exceeding 2000.',
+    });
     expect(next).not.toHaveBeenCalled();
   });
 
@@ -116,7 +124,9 @@ describe('validateParams Middleware', () => {
     expect(res.status).toHaveBeenCalledWith(400);
     expect(
       (res.status as jasmine.Spy).calls.mostRecent().returnValue.json,
-    ).toHaveBeenCalledWith({ error: 'Height must be a positive integer not exceeding 2000.' });
+    ).toHaveBeenCalledWith({
+      error: 'Height must be a positive integer not exceeding 2000.',
+    });
     expect(next).not.toHaveBeenCalled();
   });
 
@@ -127,7 +137,10 @@ describe('validateParams Middleware', () => {
     expect(res.status).toHaveBeenCalledWith(400);
     expect(
       (res.status as jasmine.Spy).calls.mostRecent().returnValue.json,
-    ).toHaveBeenCalledWith({ error: 'Format must be one of the following: jpg, jpeg, png, bmp, tiff, gif.' });
+    ).toHaveBeenCalledWith({
+      error:
+        'Format must be one of the following: jpg, jpeg, png, bmp, tiff, gif.',
+    });
     expect(next).not.toHaveBeenCalled();
   });
 });

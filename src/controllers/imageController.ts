@@ -34,7 +34,7 @@ export const imageController = async (
 
     const widthStr = width ? String(width) : 'auto';
     const heightStr = height ? String(height) : 'auto';
-    const formatStr = format ? String(format) : 'jpeg';
+    const formatStr = format ? String(format) : 'jpg';
 
     const outputFilename = `${path.parse(filename!).name}_${widthStr}x${heightStr}.${formatStr}`;
     const outputPath = path.join(CACHE_DIR, outputFilename);

@@ -32,7 +32,7 @@ export const imageController = (req, res) => __awaiter(void 0, void 0, void 0, f
         }
         const widthStr = width ? String(width) : 'auto';
         const heightStr = height ? String(height) : 'auto';
-        const formatStr = format ? String(format) : 'jpeg';
+        const formatStr = format ? String(format) : 'jpg';
         const outputFilename = `${path.parse(filename).name}_${widthStr}x${heightStr}.${formatStr}`;
         const outputPath = path.join(CACHE_DIR, outputFilename);
         // serve from cache if exists

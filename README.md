@@ -1,0 +1,108 @@
+## Image Processing API
+
+This is a Node.js application in TypeScript that provides an image processing API.
+It provides support for image resizing and formatting, caches processed images, and possesses good error handling.
+
+## Requirements
+
+- Node.js
+- npm
+
+## Technologies used
+
+- **Node.js & Express** for building the API server.
+- **Sharp** for image processing.
+- **Jasmine** for unit testing.
+- **TypeScript** for type safety and maintainability.
+- **ESLint** for linting.
+- **Prettier** for code formatting.
+
+## Project Features
+
+- Resize images based on **width** and **height** parameters.
+- Change image format (jpg, jpeg, png, bmp, tiff, gif).
+- Caching processed images for faster subsequent requests.
+- Validate query parameters and returns meaningful errors.
+- Fully tested with unit tests.
+
+## Installation and setup
+
+### Clone repository
+
+- git clone https://github.com/LeenShaikh/image-api.git
+- cd image-api
+
+### Install dependencies
+
+- npm install
+
+### Compile TypeScript
+
+- npm run build
+
+### Running server
+
+- node dist/server.js
+- The API will run at : http://localhost:3000
+
+## Available Scripts
+
+### Run ESLint to check code style
+
+- npm run lint
+
+### Run Jasmine unit tests
+
+- npm run test
+
+### Run Prettier to auto-format code
+
+- npm run format
+
+### Run full validation (format, lint, build, and tests):
+
+- npm run check-all
+
+## API Endpoint
+
+- http://localhost:3000/api/images
+
+### Query Parameters
+
+- filename (string): Original image filename.
+- width (number): Desired width in pixels (1-2000).
+- height (number): Desired height in pixels (1-2000).
+- format (string): Output format: jpg, jpeg, png, bmp, tiff, gif.
+
+### Example Request
+
+- http://localhost:3000/api/images?filename=palmtunnel.jpg&width=200&height=300&format=jpg
+- The processed image will be returned and cached in the cache/ folder for future requests.
+
+### Responses
+
+- 200 OK – Returns the processed image (either from cache or newly generated)
+
+- 400 Bad Request – Invalid query parameters (e.g., negative width, unsupported format)
+
+- 404 Not Found – Original image does not exist
+
+- 500 Internal Server Error – Error during image processing
+
+## Unit Tests
+
+Jasmine used to test API functionality:
+
+- **Middleware Tests**: Validate query parameters(filename, width, height, format).
+- **Controller Tests**: Tests image processing, caching and error handling.
+
+## Notes
+
+- Processed images are stored in cache/ for faster access on repeated requests.
+- Original images must be placed in images/ folder.
+- Always run **npm run build** after modifying TypeScript source.
+
+## Author
+
+- Leen Shaikhibrahim
+- GitHub: https://github.com/LeenShaikh
