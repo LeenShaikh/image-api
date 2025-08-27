@@ -28,7 +28,8 @@ export const imageController = (req, res) => __awaiter(void 0, void 0, void 0, f
         const inputPath = path.join(IMAGES_DIR, filename);
         // Check if the original image exists
         if (!fs.existsSync(inputPath)) {
-            return res.status(404).json({ error: 'Original image not found.' });
+            res.status(404).json({ error: 'Original image not found.' });
+            return;
         }
         const widthStr = width ? String(width) : 'auto';
         const heightStr = height ? String(height) : 'auto';
@@ -37,14 +38,16 @@ export const imageController = (req, res) => __awaiter(void 0, void 0, void 0, f
         const outputPath = path.join(CACHE_DIR, outputFilename);
         // serve from cache if exists
         if (fs.existsSync(outputPath)) {
-            return res.sendFile(outputPath);
+            res.sendFile(outputPath);
+            return;
         }
         // If not in cache, process the image
         yield sharp(inputPath)
             .resize(width ? Number(width) : undefined, height ? Number(height) : undefined)
             .toFormat(formatStr)
             .toFile(outputPath);
-        return res.sendFile(outputPath);
+        res.sendFile(outputPath);
+        return;
     }
     catch (error) {
         console.error('Error processing image:', error);

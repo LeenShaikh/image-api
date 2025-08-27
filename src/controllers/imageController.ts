@@ -21,7 +21,7 @@ if (!fs.existsSync(CACHE_DIR)) {
 export const imageController = async (
   req: Request<unknown, unknown, unknown, ImageParams>,
   res: Response,
-) => {
+): Promise<void> => {
   try {
     const { filename, width, height, format } = req.query;
 
@@ -29,18 +29,20 @@ export const imageController = async (
 
     // Check if the original image exists
     if (!fs.existsSync(inputPath)) {
-      return res.status(404).json({ error: 'Original image not found.' });
+      res.status(404).json({ error: 'Original image not found.' });
+      return;
     }
 
-    const widthStr = width ? String(width) : 'auto';
-    const heightStr = height ? String(height) : 'auto';
-    const formatStr = format ? String(format) : 'jpg';
+    const widthStr: string = width ? String(width) : 'auto';
+    const heightStr: string = height ? String(height) : 'auto';
+    const formatStr: string = format ? String(format) : 'jpg';
 
     const outputFilename = `${path.parse(filename!).name}_${widthStr}x${heightStr}.${formatStr}`;
     const outputPath = path.join(CACHE_DIR, outputFilename);
     // serve from cache if exists
     if (fs.existsSync(outputPath)) {
-      return res.sendFile(outputPath);
+      res.sendFile(outputPath);
+      return;
     }
 
     // If not in cache, process the image
@@ -52,8 +54,9 @@ export const imageController = async (
       )
       .toFormat(formatStr as keyof sharp.FormatEnum)
       .toFile(outputPath);
-    return res.sendFile(outputPath);
-  } catch (error) {
+    res.sendFile(outputPath);
+    return;
+  } catch (error: unknown) {
     console.error('Error processing image:', error);
     res.status(500).json({ error: 'Error processing image.' });
   }

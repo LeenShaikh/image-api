@@ -80,13 +80,13 @@ It provides support for image resizing and formatting, caches processed images, 
 
 ### Responses
 
-- 200 OK – Returns the processed image (either from cache or newly generated)
+- 200 OK : Returns the processed image (either from cache or newly generated)
 
-- 400 Bad Request – Invalid query parameters (e.g., negative width, unsupported format)
+- 400 Bad Request : Invalid query parameters (e.g., negative width, unsupported format)
 
-- 404 Not Found – Original image does not exist
+- 404 Not Found : Original image does not exist
 
-- 500 Internal Server Error – Error during image processing
+- 500 Internal Server Error : Error during image processing
 
 ## Tests
 
@@ -102,6 +102,18 @@ Jasmine used to test API functionality:
 - Processed images are stored in cache/ for faster access on repeated requests.
 - Original images must be placed in images/ folder.
 - Always run **npm run build** after modifying TypeScript source.
+
+## Notes / Highlights
+
+- Added explicit return type Promise<void> to imageController function.
+
+- Declared types for variables (widthStr: string, heightStr: string, formatStr: string).
+
+- Updated catch block to use error: unknown type.
+
+- Added return statements after responses (res.sendFile, res.status) to satisfy TypeScript flow.
+
+- Updated package.json: Kept only express and sharp in dependencies (runtime) & Moved supertest, jasmine, jasmine-spec-reporter, and all @types/\* packages to devDependencies.
 
 ## Author
 
