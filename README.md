@@ -113,6 +113,8 @@ Jasmine used to test API functionality:
 
 - Added return statements after responses (res.sendFile, res.status) to satisfy TypeScript flow.
 
+- Added explicit return type void to the callback function in server.ts for app.listen.
+
 - Updated package.json: Kept only express and sharp in dependencies (runtime) & Moved supertest, jasmine, jasmine-spec-reporter, and all @types/\* packages to devDependencies.
 
 ## Author
