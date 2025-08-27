@@ -16,6 +16,7 @@ It provides support for image resizing and formatting, caches processed images, 
 - **TypeScript** for type safety and maintainability.
 - **ESLint** for linting.
 - **Prettier** for code formatting.
+- **SuperTest** for integration testing of API endpoints.
 
 ## Project Features
 
@@ -25,7 +26,7 @@ It provides support for image resizing and formatting, caches processed images, 
 - Validate query parameters and returns meaningful errors.
 - Fully tested with unit tests.
 
-## Installation and setup
+## Installation and setup and available scripts
 
 ### Clone repository
 
@@ -42,16 +43,14 @@ It provides support for image resizing and formatting, caches processed images, 
 
 ### Running server
 
-- node dist/server.js
+- npm start
 - The API will run at : http://localhost:3000
-
-## Available Scripts
 
 ### Run ESLint to check code style
 
 - npm run lint
 
-### Run Jasmine unit tests
+### Runs all tests including unit tests and integration tests using Jasmine and SuperTest.
 
 - npm run test
 
@@ -89,12 +88,14 @@ It provides support for image resizing and formatting, caches processed images, 
 
 - 500 Internal Server Error – Error during image processing
 
-## Unit Tests
+## Tests
 
 Jasmine used to test API functionality:
 
 - **Middleware Tests**: Validate query parameters(filename, width, height, format).
 - **Controller Tests**: Tests image processing, caching and error handling.
+- **Integration Tests**: Use SuperTest to make actual HTTP requests to the API endpoint.
+  - Covers both success scenarios (valid inputs) and error scenarios (invalid inputs).
 
 ## Notes
 

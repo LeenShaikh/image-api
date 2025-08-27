@@ -4,6 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start": "node dist/server.js",
     "build": "tsc",
     "test": "jasmine",
     "lint": "eslint . --ext .ts",
